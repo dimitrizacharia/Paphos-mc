@@ -1,1 +1,231 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Paphos Motorcycle Club | Off-Road Adventures</title>
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Top Navigation -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="logo">
+        <span class="logo-mark">PMC</span>
+        <span class="logo-text">
+          Paphos Motorcycle Club
+          <small>Off-Road & Adventure</small>
+        </span>
+      </div>
+      <nav class="main-nav">
+        <a href="#events">Events</a>
+        <a href="#membership">Membership</a>
+        <a href="#ideas">Ideas</a>
+        <a href="#gallery">Gallery</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content container">
+      <h1>Ride Dirt. Ride Paphos.</h1>
+      <p>Off-road, hard enduro, adventure rides, coaching and local events in Paphos and beyond.</p>
+      <div class="hero-buttons">
+        <a href="#events" class="btn btn-primary">Upcoming Events</a>
+        <a href="#membership" class="btn btn-outline">Join the Club</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Events Section -->
+  <section id="events" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Upcoming Events</h2>
+        <p>Scrambles, hard enduro, adventure rides and coaching days.</p>
+      </div>
+      <div id="events-list" class="cards-grid">
+        <!-- Events will be injected here by script.js -->
+      </div>
+      <p class="section-note">
+        <!-- This text is just a helper for you, not functional -->
+        To update events, edit <code>events.json</code> in this repo. No code changes needed.
+      </p>
+    </div>
+  </section>
+
+  <!-- Membership Section -->
+  <section id="membership" class="section section-alt">
+    <div class="container split-layout">
+      <div>
+        <h2>Become a Member</h2>
+        <p>Join our off-road family. Membership helps support events, tracks and coaching in Paphos.</p>
+        <ul class="bullets">
+          <li>Organised off-road rides & events</li>
+          <li>Coaching & skill-building days</li>
+          <li>Local community of riders & friends</li>
+        </ul>
+      </div>
+      <div>
+        <form class="form-card"
+              method="POST"
+              action="https://formspree.io/f/YOUR_FORM_ID_HERE">
+          <!-- Replace the action URL above with your Formspree (or similar) endpoint -->
+
+          <h3>Membership Registration</h3>
+
+          <label>
+            Full Name*
+            <input type="text" name="name" required />
+          </label>
+
+          <label>
+            Email*
+            <input type="email" name="email" required />
+          </label>
+
+          <label>
+            Phone
+            <input type="tel" name="phone" />
+          </label>
+
+          <label>
+            Riding Level
+            <select name="riding_level">
+              <option value="beginner">Beginner</option>
+              <option value="intermediate">Intermediate</option>
+              <option value="advanced">Advanced</option>
+              <option value="pro">Pro / Racer</option>
+            </select>
+          </label>
+
+          <label>
+            Bike / Bikes
+            <input type="text" name="bike" placeholder="e.g. KTM 300 EXC, Stark Varg, Adventure 890…" />
+          </label>
+
+          <label>
+            Message
+            <textarea name="message" rows="4" placeholder="Tell us a bit about you and what type of riding you like."></textarea>
+          </label>
+
+          <button type="submit" class="btn btn-primary full-width">Send Membership Request</button>
+
+          <p class="form-footnote">
+            This form will email the club. You can also contact us directly at
+            <a href="mailto:YOUR-CLUB-EMAIL@domain.com">YOUR-CLUB-EMAIL@domain.com</a>
+          </p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ideas / Coaching Section -->
+  <section id="ideas" class="section">
+    <div class="container split-layout">
+      <div>
+        <h2>Ideas, Rides & Coaching</h2>
+        <p>Got an idea for a ride, training day or event? Share it with us.</p>
+        <p>We’re always looking for new trails, race formats, social rides and coaching topics.</p>
+      </div>
+      <div>
+        <form class="form-card"
+              method="POST"
+              action="https://formspree.io/f/YOUR_OTHER_FORM_ID_HERE">
+          <!-- Replace the action URL with your second Formspree (or similar) endpoint -->
+
+          <h3>Share Your Idea</h3>
+
+          <label>
+            Name*
+            <input type="text" name="name" required />
+          </label>
+
+          <label>
+            Email*
+            <input type="email" name="email" required />
+          </label>
+
+          <label>
+            Idea Type
+            <select name="idea_type">
+              <option value="ride">Ride / Trip</option>
+              <option value="coaching">Coaching Session</option>
+              <option value="race">Race / Event</option>
+              <option value="other">Other</option>
+            </select>
+          </label>
+
+          <label>
+            Your Idea*
+            <textarea name="idea" rows="5" required placeholder="Describe the ride, route, level, location or what you’d like us to organise."></textarea>
+          </label>
+
+          <button type="submit" class="btn btn-primary full-width">Send Idea</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section id="gallery" class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <h2>Gallery</h2>
+        <p>Races, training days, adventures and hard enduro from the PMC crew.</p>
+      </div>
+
+      <div class="gallery-grid">
+        <!-- To add photos:
+             1) Upload image to /gallery folder in GitHub
+             2) Add another <figure> block below with the correct file name
+        -->
+        <figure class="gallery-item">
+          <img src="gallery/hero.jpg" alt="Off-road bikes on a Paphos mountain trail" />
+          <figcaption>Paphos mountains – winter ride</figcaption>
+        </figure>
+
+        <figure class="gallery-item">
+          <img src="gallery/ride1.jpg" alt="Hard enduro climb" />
+          <figcaption>Hard enduro training climb</figcaption>
+        </figure>
+
+        <figure class="gallery-item">
+          <img src="gallery/ride2.jpg" alt="Adventure bikes in the valley" />
+          <figcaption>Adventure ride to the valley</figcaption>
+        </figure>
+
+        <!-- Add more <figure> elements as needed -->
+      </div>
+
+      <p class="section-note">
+        To add a new photo, just upload it into the <code>gallery</code> folder and copy-paste another
+        <code>&lt;figure&gt;</code> block with the new file name.
+      </p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; <span id="year"></span> Paphos Motorcycle Club. All rights reserved.</p>
+      <p class="footer-sub">
+        Off-road | Hard Enduro | Adventure | Paphos, Cyprus
+      </p>
+    </div>
+  </footer>
+
+  <!-- Main JS -->
+  <script src="script.js"></script>
+</body>
+</html>
