@@ -58,7 +58,6 @@
         <!-- Events will be injected here by script.js -->
       </div>
       <p class="section-note">
-        <!-- This text is just a helper for you, not functional -->
         To update events, edit <code>events.json</code> in this repo. No code changes needed.
       </p>
     </div>
@@ -80,7 +79,11 @@
         <form class="form-card"
               method="POST"
               action="https://formspree.io/f/mnnlrqnq">
-          <!-- Replace the action URL above with your Formspree (or similar) endpoint -->
+          <!-- Hidden fields for better emails -->
+          <input type="hidden" name="_subject" value="New PMC Membership Request">
+          <input type="hidden" name="_template" value="table">
+          <!-- Optional: redirect after submit -->
+          <!-- <input type="hidden" name="_redirect" value="https://dimitrizacharia.github.io/thank-you.html"> -->
 
           <h3>Membership Registration</h3>
 
@@ -139,86 +142,3 @@
         <p>We’re always looking for new trails, race formats, social rides and coaching topics.</p>
       </div>
       <div>
-        <form class="form-card"
-      method="POST"
-      action="https://formspree.io/f/mdkyjoka">
-  <!-- Hidden fields for better emails -->
-  <input type="hidden" name="_subject" value="New PMC Membership Request">
-  <input type="hidden" name="_template" value="table">
-  <!-- Optional: set a redirect page after submit -->
-  <!-- <input type="hidden" name="_redirect" value="https://dimitrizacharia.github.io/thank-you.html"> -->
-
-          <h3>Share Your Idea</h3>
-
-          <label>
-            Name*
-            <input type="text" name="name" required />
-          </label>
-
-          <label>
-            Email*
-            <input type="email" name="email" required />
-          </label>
-
-          <label>
-            Idea Type
-            <select name="idea_type">
-              <option value="ride">Ride / Trip</option>
-              <option value="coaching">Coaching Session</option>
-              <option value="race">Race / Event</option>
-              <option value="other">Other</option>
-            </select>
-          </label>
-
-          <label>
-            Your Idea*
-            <textarea name="idea" rows="5" required placeholder="Describe the ride, route, level, location or what you’d like us to organise."></textarea>
-          </label>
-
-          <button type="submit" class="btn btn-primary full-width">Send Idea</button>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  
-        -->
-        <figure class="gallery-item">
-          <img src="gallery/hero.jpg" alt="Off-road bikes on a Paphos mountain trail" />
-          <figcaption>Paphos mountains – winter ride</figcaption>
-        </figure>
-
-        <figure class="gallery-item">
-          <img src="gallery/ride1.jpg" alt="Hard enduro climb" />
-          <figcaption>Hard enduro training climb</figcaption>
-        </figure>
-
-        <figure class="gallery-item">
-          <img src="gallery/ride2.jpg" alt="Adventure bikes in the valley" />
-          <figcaption>Adventure ride to the valley</figcaption>
-        </figure>
-
-        <!-- Add more <figure> elements as needed -->
-      </div>
-
-      <p class="section-note">
-        To add a new photo, just upload it into the <code>gallery</code> folder and copy-paste another
-        <code>&lt;figure&gt;</code> block with the new file name.
-      </p>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <p>&copy; <span id="year"></span> Paphos Motorcycle Club. All rights reserved.</p>
-      <p class="footer-sub">
-        Off-road | Hard Enduro | Adventure | Paphos, Cyprus
-      </p>
-    </div>
-  </footer>
-
-  <!-- Main JS -->
-  <script src="script.js"></script>
-</body>
-</html>
