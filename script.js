@@ -1,5 +1,4 @@
-
-// Auto-set current year in footer
+// Auto-set current year in footer + run events & gallery
 document.addEventListener("DOMContentLoaded", () => {
   const yearSpan = document.getElementById("year");
   if (yearSpan) {
@@ -7,21 +6,25 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   loadEvents();
+  loadGallery();
 });
+
+// ---------------- GALLERY ----------------
 
 function loadGallery() {
   const galleryFolder = "gallery/";
   const galleryEl = document.getElementById("auto-gallery");
+  if (!galleryEl) return;
 
   const images = [
-    // Just list your images here – OR auto-generate later
+    // Just list your images here
     "hero.jpg",
     "ride1.jpg",
     "ride2.jpg",
-    // Add more here…
+    // Add more: "scramble1.jpg", "training-day-1.jpg", ...
   ];
 
-  images.forEach(filename => {
+  images.forEach((filename) => {
     const figure = document.createElement("figure");
     figure.className = "gallery-item";
 
@@ -34,11 +37,8 @@ function loadGallery() {
   });
 }
 
-// Run both on load
-document.addEventListener("DOMContentLoaded", () => {
-  loadEvents();
-  loadGallery();
-});
+// ---------------- EVENTS ----------------
+
 function loadEvents() {
   fetch("events.json")
     .then((res) => res.json())
@@ -71,16 +71,8 @@ function loadEvents() {
             ${event.time ? `<span>⏱ ${event.time}</span>` : ""}
             ${event.location ? `<span>📍 ${event.location}</span>` : ""}
           </div>
-          ${
-            event.level
-              ? `<div class="event-level">${event.level}</div>`
-              : ""
-          }
-          ${
-            event.description
-              ? `<p class="event-description">${event.description}</p>`
-              : ""
-          }
+          ${event.level ? `<div class="event-level">${event.level}</div>` : ""}
+          ${event.description ? `<p class="event-description">${event.description}</p>` : ""}
           ${
             event.link
               ? `<a class="event-cta" href="${event.link}" target="_blank" rel="noopener">More details / Registration →</a>`
