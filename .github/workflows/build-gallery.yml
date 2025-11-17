@@ -1,4 +1,3 @@
-
 name: Build gallery manifest
 
 on:
@@ -11,6 +10,8 @@ on:
 jobs:
   build-gallery:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout repo
@@ -22,12 +23,15 @@ jobs:
           import os, json
 
           gallery_dir = "gallery"
-          exts = (".jpg", ".jpeg", ".png", ".gif", ".webp", ".JPG", ".JPEG", ".PNG", ".GIF", ".WEBP")
+          exts = (".jpg", ".jpeg", ".png", ".gif", ".webp",
+                  ".JPG", ".JPEG", ".PNG", ".GIF", ".WEBP")
 
           files = []
-          for f in os.listdir(gallery_dir):
-            if f.endswith(exts) and os.path.isfile(os.path.join(gallery_dir, f)):
-              files.append(f)
+          if os.path.isdir(gallery_dir):
+            for f in os.listdir(gallery_dir):
+              path = os.path.join(gallery_dir, f)
+              if os.path.isfile(path) and f.endswith(exts):
+                files.append(f)
 
           files.sort()
 
