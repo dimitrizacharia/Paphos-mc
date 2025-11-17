@@ -16,26 +16,36 @@ function loadGallery() {
   const galleryEl = document.getElementById("auto-gallery");
   if (!galleryEl) return;
 
-  const images = [
-    // Just list your images here
-    "hero.jpg",
-    "ride1.jpg",
-    "ride2.jpg",
-    "GOPRO284.JPG"
-        // Add more: "scramble1.jpg", "training-day-1.jpg", ...
-  ];
+  fetch("gallery.json")
+    .then((res) => res.json())
+    .then((images) => {
+      if (!Array.isArray(images) || images.length === 0) {
+        galleryEl.innerHTML = `
+          <p style="color:#a6a7b5; font-size:0.9rem;">
+            No photos in the gallery yet. Add images to the <code>gallery</code> folder.
+          </p>`;
+        return;
+      }
 
-  images.forEach((filename) => {
-    const figure = document.createElement("figure");
-    figure.className = "gallery-item";
+      images.forEach((filename) => {
+        const figure = document.createElement("figure");
+        figure.className = "gallery-item";
 
-    figure.innerHTML = `
-      <img src="${galleryFolder}${filename}" alt="${filename}">
-      <figcaption>${filename.replace(/\.[^/.]+$/, "")}</figcaption>
-    `;
+        figure.innerHTML = `
+          <img src="${galleryFolder}${filename}" alt="${filename}">
+          <figcaption>${filename.replace(/\.[^/.]+$/, "").replace(/[-_]/g, " ")}</figcaption>
+        `;
 
-    galleryEl.appendChild(figure);
-  });
+        galleryEl.appendChild(figure);
+      });
+    })
+    .catch((err) => {
+      console.error("Error loading gallery:", err);
+      galleryEl.innerHTML = `
+        <p style="color:#a6a7b5; font-size:0.9rem;">
+          Could not load gallery (check <code>gallery.json</code> in the repo).
+        </p>`;
+    });
 }
 
 // ---------------- EVENTS ----------------
