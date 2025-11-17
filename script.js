@@ -21,7 +21,8 @@ function loadGallery() {
     "hero.jpg",
     "ride1.jpg",
     "ride2.jpg",
-    // Add more: "scramble1.jpg", "training-day-1.jpg", ...
+    "GOPRO284.JPG"
+        // Add more: "scramble1.jpg", "training-day-1.jpg", ...
   ];
 
   images.forEach((filename) => {
