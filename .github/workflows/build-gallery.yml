@@ -1,1 +1,46 @@
 
+name: Build gallery manifest
+
+on:
+  push:
+    paths:
+      - "gallery/**"
+      - ".github/workflows/build-gallery.yml"
+  workflow_dispatch:
+
+jobs:
+  build-gallery:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Generate gallery.json
+        run: |
+          python - << 'EOF'
+          import os, json
+
+          gallery_dir = "gallery"
+          exts = (".jpg", ".jpeg", ".png", ".gif", ".webp", ".JPG", ".JPEG", ".PNG", ".GIF", ".WEBP")
+
+          files = []
+          for f in os.listdir(gallery_dir):
+            if f.endswith(exts) and os.path.isfile(os.path.join(gallery_dir, f)):
+              files.append(f)
+
+          files.sort()
+
+          with open("gallery.json", "w", encoding="utf-8") as fp:
+            json.dump(files, fp)
+          EOF
+
+      - name: Commit and push gallery.json
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            git config user.name "github-actions"
+            git config user.email "actions@github.com"
+            git add gallery.json
+            git commit -m "Update gallery.json from GitHub Action"
+            git push
+          fi
