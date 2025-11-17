@@ -67,7 +67,14 @@ a:hover {
 .logo {
   display: flex;
   align-items: center;
-  gap: 0.7rem;
+}
+
+.logo-image {
+  height: 62px;
+  width: auto;
+  object-fit: contain;
+}
+
 }
 
 .logo-mark {
