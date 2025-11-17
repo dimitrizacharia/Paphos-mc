@@ -9,6 +9,36 @@ document.addEventListener("DOMContentLoaded", () => {
   loadEvents();
 });
 
+function loadGallery() {
+  const galleryFolder = "gallery/";
+  const galleryEl = document.getElementById("auto-gallery");
+
+  const images = [
+    // Just list your images here – OR auto-generate later
+    "hero.jpg",
+    "ride1.jpg",
+    "ride2.jpg",
+    // Add more here…
+  ];
+
+  images.forEach(filename => {
+    const figure = document.createElement("figure");
+    figure.className = "gallery-item";
+
+    figure.innerHTML = `
+      <img src="${galleryFolder}${filename}" alt="${filename}">
+      <figcaption>${filename.replace(/\.[^/.]+$/, "")}</figcaption>
+    `;
+
+    galleryEl.appendChild(figure);
+  });
+}
+
+// Run both on load
+document.addEventListener("DOMContentLoaded", () => {
+  loadEvents();
+  loadGallery();
+});
 function loadEvents() {
   fetch("events.json")
     .then((res) => res.json())
