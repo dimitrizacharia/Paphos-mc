@@ -138,7 +138,7 @@ a:hover {
     ),
     url("gallery/hero.jpg");
   background-size: cover;
-  background-position: center 70%;
+  background-position: center 30%;
   background-attachment: fixed;
 }
 
