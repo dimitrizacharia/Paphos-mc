@@ -111,3 +111,46 @@ function loadEvents() {
       }
     });
 }
+// ---------- EVENT SIGNUP MODAL ----------
+
+const eventModal      = document.getElementById("event-modal");
+const eventModalClose = document.getElementById("event-modal-close");
+const eventNameInput  = document.getElementById("event-name");
+const eventModalTitle = document.getElementById("event-modal-title");
+
+function openEventModal(eventTitle) {
+  if (!eventModal) return;
+  eventModal.classList.remove("hidden");
+  if (eventNameInput) eventNameInput.value = eventTitle;
+  if (eventModalTitle) eventModalTitle.textContent = `Join: ${eventTitle}`;
+}
+
+function closeEventModal() {
+  if (!eventModal) return;
+  eventModal.classList.add("hidden");
+}
+
+// Called after events are rendered
+function attachEventJoinHandlers() {
+  const buttons = document.querySelectorAll(".join-event-btn");
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const title = btn.getAttribute("data-event-title") || "PMC Ride";
+      openEventModal(title);
+    });
+  });
+}
+
+// Close icon
+if (eventModalClose) {
+  eventModalClose.addEventListener("click", closeEventModal);
+}
+
+// Click on dark backdrop to close
+if (eventModal) {
+  eventModal.addEventListener("click", (e) => {
+    if (e.target.classList.contains("modal-backdrop")) {
+      closeEventModal();
+    }
+  });
+}
