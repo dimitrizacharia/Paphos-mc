@@ -331,6 +331,43 @@ a:hover {
 .event-cta {
   font-size: 0.8rem;
   color: var(--accent-strong);
+  .modal.hidden { display: none; }
+
+.modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+
+.modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+}
+
+.modal-content {
+  position: relative;
+  background: #181925;
+  border-radius: 16px;
+  padding: 1.75rem;
+  max-width: 420px;
+  width: 90%;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+}
+
+.modal-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  border: none;
+  background: transparent;
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
 }
 
 /* Bullets */
