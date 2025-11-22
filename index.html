@@ -69,17 +69,22 @@
     <button class="modal-close" id="event-modal-close">&times;</button>
     <h3 id="event-modal-title">Join Ride</h3>
 
-    <form id="event-form">
-      <input type="hidden" id="event-name" name="eventName" />
+    <form
+      id="event-form"
+      action="https://formspree.io/f/xblboypv
+      method="POST"
+    >
+      <!-- This will be auto-filled from JS when they click "Join this ride" -->
+      <input type="hidden" id="event-name" name="Event Name" />
 
       <label for="rider-name">Your name</label>
-      <input type="text" id="rider-name" name="riderName" required>
+      <input type="text" id="rider-name" name="Rider Name" required>
 
       <label for="rider-phone">Phone / WhatsApp</label>
-      <input type="tel" id="rider-phone" name="riderPhone" required>
+      <input type="tel" id="rider-phone" name="Phone / WhatsApp" required>
 
       <label for="riders-count">How many riders in your group?</label>
-      <select id="riders-count" name="ridersCount" required>
+      <select id="riders-count" name="Riders in group" required>
         <option value="" disabled selected>Select</option>
         <option value="1">1 rider</option>
         <option value="2">2 riders</option>
@@ -90,8 +95,14 @@
       </select>
 
       <label for="extra-notes">Notes (optional)</label>
-      <textarea id="extra-notes" name="notes" rows="3"
+      <textarea id="extra-notes" name="Notes" rows="3"
         placeholder="Bike type, level, anything we should know"></textarea>
+
+      <!-- Optional: set subject line of the email -->
+      <input type="hidden" name="_subject" value="New PMC event signup" />
+
+      <!-- Optional: redirect to a thank-you page -->
+      <!-- <input type="hidden" name="_redirect" value="https://paphosmc.org/thanks.html"> -->
 
       <button type="submit" class="btn-primary">Send</button>
     </form>
@@ -99,6 +110,7 @@
     <p id="event-form-message" class="form-message"></p>
   </div>
 </div>
+
 
   <!-- Membership Section -->
   <section id="membership" class="section section-alt">
