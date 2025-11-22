@@ -62,6 +62,43 @@
       </p>
     </div>
   </section>
+  <!-- Event Signup Modal -->
+<div id="event-modal" class="modal hidden">
+  <div class="modal-backdrop"></div>
+  <div class="modal-content">
+    <button class="modal-close" id="event-modal-close">&times;</button>
+    <h3 id="event-modal-title">Join Ride</h3>
+
+    <form id="event-form">
+      <input type="hidden" id="event-name" name="eventName" />
+
+      <label for="rider-name">Your name</label>
+      <input type="text" id="rider-name" name="riderName" required>
+
+      <label for="rider-phone">Phone / WhatsApp</label>
+      <input type="tel" id="rider-phone" name="riderPhone" required>
+
+      <label for="riders-count">How many riders in your group?</label>
+      <select id="riders-count" name="ridersCount" required>
+        <option value="" disabled selected>Select</option>
+        <option value="1">1 rider</option>
+        <option value="2">2 riders</option>
+        <option value="3">3 riders</option>
+        <option value="4">4 riders</option>
+        <option value="5">5 riders</option>
+        <option value="6">6+ riders</option>
+      </select>
+
+      <label for="extra-notes">Notes (optional)</label>
+      <textarea id="extra-notes" name="notes" rows="3"
+        placeholder="Bike type, level, anything we should know"></textarea>
+
+      <button type="submit" class="btn-primary">Send</button>
+    </form>
+
+    <p id="event-form-message" class="form-message"></p>
+  </div>
+</div>
 
   <!-- Membership Section -->
   <section id="membership" class="section section-alt">
