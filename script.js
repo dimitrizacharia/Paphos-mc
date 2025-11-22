@@ -67,32 +67,38 @@ function loadEvents() {
         return;
       }
 
-      events.forEach((event) => {
+      events.forEach((ev) => {
         const card = document.createElement("article");
         card.className = "event-card";
 
         card.innerHTML = `
           <div class="event-badge">
             <span></span>
-            <strong>${event.type || "Event"}</strong>
+            <strong>${ev.type || "Event"}</strong>
           </div>
-          <h3 class="event-title">${event.title}</h3>
+          <h3 class="event-title">${ev.title}</h3>
           <div class="event-meta">
-            ${event.date ? `<span>📅 ${event.date}</span>` : ""}
-            ${event.time ? `<span>⏱ ${event.time}</span>` : ""}
-            ${event.location ? `<span>📍 ${event.location}</span>` : ""}
+            ${ev.date ? `<span>📅 ${ev.date}</span>` : ""}
+            ${ev.time ? `<span>⏱ ${ev.time}</span>` : ""}
+            ${ev.location ? `<span>📍 ${ev.location}</span>` : ""}
           </div>
-          ${event.level ? `<div class="event-level">${event.level}</div>` : ""}
-          ${event.description ? `<p class="event-description">${event.description}</p>` : ""}
+          ${ev.level ? `<div class="event-level">${ev.level}</div>` : ""}
+          ${ev.description ? `<p class="event-description">${ev.description}</p>` : ""}
           ${
-            event.link
-              ? `<a class="event-cta" href="${event.link}" target="_blank" rel="noopener">More details / Registration →</a>`
+            ev.link
+              ? `<a class="event-cta" href="${ev.link}" target="_blank" rel="noopener">More details →</a>`
               : ""
           }
+          <button class="event-cta join-event-btn" data-event-title="${ev.title}">
+            Join this ride
+          </button>
         `;
 
         container.appendChild(card);
       });
+
+      // After events are rendered, attach click handlers
+      attachEventJoinHandlers();
     })
     .catch((err) => {
       console.error("Error loading events:", err);
