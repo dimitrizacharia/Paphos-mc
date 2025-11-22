@@ -11,42 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // ---------------- GALLERY ----------------
 
-function loadGallery() {
-  const galleryFolder = "gallery/";
-  const galleryEl = document.getElementById("auto-gallery");
-  if (!galleryEl) return;
 
-  fetch("gallery.json")
-    .then((res) => res.json())
-    .then((images) => {
-      if (!Array.isArray(images) || images.length === 0) {
-        galleryEl.innerHTML = `
-          <p style="color:#a6a7b5; font-size:0.9rem;">
-            No photos in the gallery yet. Add images to the <code>gallery</code> folder.
-          </p>`;
-        return;
-      }
-
-      images.forEach((filename) => {
-        const figure = document.createElement("figure");
-        figure.className = "gallery-item";
-
-        figure.innerHTML = `
-          <img src="${galleryFolder}${filename}" alt="${filename}">
-          <figcaption>${filename.replace(/\.[^/.]+$/, "").replace(/[-_]/g, " ")}</figcaption>
-        `;
-
-        galleryEl.appendChild(figure);
-      });
-    })
-    .catch((err) => {
-      console.error("Error loading gallery:", err);
-      galleryEl.innerHTML = `
-        <p style="color:#a6a7b5; font-size:0.9rem;">
-          Could not load gallery (check <code>gallery.json</code> in the repo).
-        </p>`;
-    });
-}
 
 // ---------------- EVENTS ----------------
 
