@@ -71,10 +71,10 @@
 
     <form
       id="event-form"
-      action="https://formspree.io/f/xblboypv"
+      action="https://formspree.io/f/xblboypv"  
       method="POST"
     >
-      <!-- This will be auto-filled from JS when they click "Join this ride" -->
+      <!-- Auto-filled from JS when they click "Join this ride" -->
       <input type="hidden" id="event-name" name="Event Name" />
 
       <label for="rider-name">Your name</label>
@@ -98,10 +98,10 @@
       <textarea id="extra-notes" name="Notes" rows="3"
         placeholder="Bike type, level, anything we should know"></textarea>
 
-      <!-- Optional: set subject line of the email -->
+      <!-- Optional: email subject line -->
       <input type="hidden" name="_subject" value="New PMC event signup" />
 
-      <!-- Optional: redirect to a thank-you page -->
+      <!-- Optional: redirect to thank you page instead of Formspree default -->
       <!-- <input type="hidden" name="_redirect" value="https://paphosmc.org/thanks.html"> -->
 
       <button type="submit" class="btn-primary">Send</button>
@@ -110,6 +110,7 @@
     <p id="event-form-message" class="form-message"></p>
   </div>
 </div>
+
 
 
   <!-- Membership Section -->
