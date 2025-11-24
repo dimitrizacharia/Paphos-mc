@@ -1,96 +1,9 @@
 // ---------- GITHUB CONFIG FOR LIBRARY ----------
-const GITHUB_OWNER = "dimitrizacharia"; // e.g. "paphosmc"
-const GITHUB_REPO  = "Paphos-mc";       // e.g. "paphosmc.github.io"
-const GITHUB_BRANCH = "main";                // or "master" if your repo uses that
+const GITHUB_OWNER = "dimitrizacharia"; // your GitHub username
+const GITHUB_REPO  = "Paphos-mc";       // your repo name
+const GITHUB_BRANCH = "main";           // or "master" if your repo uses that
 const LIBRARY_FOLDER = "library";
-// Auto-set current year in footer + run events & gallery
-document.addEventListener("DOMContentLoaded", () => {
-  const yearSpan = document.getElementById("year");
-  if (yearSpan) {
-    yearSpan.textContent = new Date().getFullYear();
-  }
 
-  loadEvents();
-  loadGallery();
-  loadLibrary();   
-});
-});
-// ---------- LIBRARY (PDF) LOADER ----------
-
-async function loadLibrary() {
-  const grid = document.getElementById("library-grid");
-  const statusEl = document.getElementById("library-status");
-
-  if (!grid) return; // no library section on this page
-
-  try {
-    const apiUrl = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${LIBRARY_FOLDER}?ref=${GITHUB_BRANCH}`;
-    const res = await fetch(apiUrl);
-
-    if (!res.ok) {
-      throw new Error(`GitHub API error: ${res.status}`);
-    }
-
-    const files = await res.json();
-
-    // Filter PDFs only
-    const pdfFiles = files.filter(
-      (file) =>
-        file.type === "file" &&
-        file.name.toLowerCase().endsWith(".pdf")
-    );
-
-    if (pdfFiles.length === 0) {
-      statusEl.textContent = "No documents available yet. Check back soon!";
-      return;
-    }
-
-    statusEl.textContent = ""; // clear "Loading..." text
-
-    grid.innerHTML = pdfFiles
-      .map((file) => {
-        const title = prettifyFileName(file.name);
-        const size = formatFileSize(file.size);
-
-        return `
-          <article class="library-card">
-            <div class="library-card-icon">📄</div>
-            <h3 class="library-card-title">${title}</h3>
-            <p class="library-card-meta">${size}</p>
-            <a href="${file.download_url}" target="_blank" class="btn library-btn">
-              Download
-            </a>
-          </article>
-        `;
-      })
-      .join("");
-  } catch (err) {
-    console.error(err);
-    if (statusEl) {
-      statusEl.textContent =
-        "Unable to load documents right now. Please try again later.";
-    }
-  }
-}
-
-function prettifyFileName(fileName) {
-  // remove extension
-  const nameWithoutExt = fileName.replace(/\.pdf$/i, "");
-  // replace _ and - with spaces, capitalize words
-  return nameWithoutExt
-    .split(/[_-]+/)
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(" ");
-}
-
-function formatFileSize(bytes) {
-  if (!bytes && bytes !== 0) return "";
-  if (bytes < 1024) return `${bytes} B`;
-  const kb = bytes / 1024;
-  if (kb < 1024) return `${kb.toFixed(1)} KB`;
-  const mb = kb / 1024;
-  return `${mb.toFixed(1)} MB`;
-}
 // ---------------- GALLERY ----------------
 
 function loadGallery() {
@@ -115,7 +28,9 @@ function loadGallery() {
 
         figure.innerHTML = `
           <img src="${galleryFolder}${filename}" alt="${filename}">
-          <figcaption>${filename.replace(/\.[^/.]+$/, "").replace(/[-_]/g, " ")}</figcaption>
+          <figcaption>${filename
+            .replace(/\.[^/.]+$/, "")
+            .replace(/[-_]/g, " ")}</figcaption>
         `;
 
         galleryEl.appendChild(figure);
@@ -193,6 +108,7 @@ function loadEvents() {
       }
     });
 }
+
 // ---------- EVENT SIGNUP MODAL ----------
 
 const eventModal      = document.getElementById("event-modal");
@@ -236,3 +152,93 @@ if (eventModal) {
     }
   });
 }
+
+// ---------- LIBRARY (PDF) LOADER ----------
+
+async function loadLibrary() {
+  const grid = document.getElementById("library-grid");
+  const statusEl = document.getElementById("library-status");
+
+  if (!grid) return; // no library section on this page
+
+  try {
+    const apiUrl = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${LIBRARY_FOLDER}?ref=${GITHUB_BRANCH}`;
+    const res = await fetch(apiUrl);
+
+    if (!res.ok) {
+      throw new Error(`GitHub API error: ${res.status}`);
+    }
+
+    const files = await res.json();
+
+    // Filter PDFs only
+    const pdfFiles = files.filter(
+      (file) =>
+        file.type === "file" &&
+        file.name.toLowerCase().endsWith(".pdf")
+    );
+
+    if (pdfFiles.length === 0) {
+      statusEl.textContent = "No documents available yet. Check back soon!";
+      return;
+    }
+
+    statusEl.textContent = ""; // clear "Loading..." text
+
+    grid.innerHTML = pdfFiles
+      .map((file) => {
+        const title = prettifyFileName(file.name);
+        const size = formatFileSize(file.size);
+
+        return `
+          <article class="library-card">
+            <div class="library-card-icon">📄</div>
+            <h3 class="library-card-title">${title}</h3>
+            <p class="library-card-meta">${size}</p>
+            <a href="${file.download_url}" target="_blank" class="btn library-btn">
+              Download
+            </a>
+          </article>
+        `;
+      })
+      .join("");
+  } catch (err) {
+    console.error(err);
+    if (statusEl) {
+      statusEl.textContent =
+        "Unable to load documents right now. Please try again later.";
+    }
+  }
+}
+
+function prettifyFileName(fileName) {
+  // remove extension
+  const nameWithoutExt = fileName.replace(/\.pdf$/i, "");
+  // replace _ and - with spaces, capitalize words
+  return nameWithoutExt
+    .split(/[_-]+/)
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+}
+
+function formatFileSize(bytes) {
+  if (!bytes && bytes !== 0) return "";
+  if (bytes < 1024) return `${bytes} B`;
+  const kb = bytes / 1024;
+  if (kb < 1024) return `${kb.toFixed(1)} KB`;
+  const mb = kb / 1024;
+  return `${mb.toFixed(1)} MB`;
+}
+
+// ---------- INIT ON PAGE LOAD ----------
+
+document.addEventListener("DOMContentLoaded", () => {
+  const yearSpan = document.getElementById("year");
+  if (yearSpan) {
+    yearSpan.textContent = new Date().getFullYear();
+  }
+
+  loadEvents();
+  loadGallery();
+  loadLibrary();
+});
