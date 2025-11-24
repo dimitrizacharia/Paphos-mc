@@ -123,6 +123,29 @@ a:hover {
   color: var(--text-main);
   border-color: var(--accent);
 }
+.social-links {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  margin-left: 20px;
+}
+
+.social-links a {
+  display: flex;
+  align-items: center;
+}
+
+.social-icon {
+  width: 22px;
+  height: 22px;
+  opacity: 0.9;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.social-icon:hover {
+  opacity: 1;
+  transform: scale(1.08);
+}
 
 /* Hero */
 
