@@ -12,6 +12,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   loadEvents();
   loadGallery();
+  loadLibrary();   
+});
 });
 // ---------- LIBRARY (PDF) LOADER ----------
 
