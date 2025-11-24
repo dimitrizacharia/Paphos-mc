@@ -29,8 +29,8 @@
         <a href="#events">Events</a>
         <a href="#membership">Membership</a>
         <a href="#ideas">Ideas</a>
-        <a href="#gallery">Gallery</a>
         <a href="#library">Library</a>
+        <a href="#gallery">Gallery</a>
       </nav>
     </div>
   </header>
@@ -59,60 +59,59 @@
         <!-- Events will be injected here by script.js -->
       </div>
       <p class="section-note">
-        
+        <!-- You can add a note here if you like -->
       </p>
     </div>
   </section>
+
   <!-- Event Signup Modal -->
-<div id="event-modal" class="modal hidden">
-  <div class="modal-backdrop"></div>
-  <div class="modal-content">
-    <button class="modal-close" id="event-modal-close">&times;</button>
-    <h3 id="event-modal-title">Join Ride</h3>
+  <div id="event-modal" class="modal hidden">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content">
+      <button class="modal-close" id="event-modal-close">&times;</button>
+      <h3 id="event-modal-title">Join Ride</h3>
 
-    <form
-      id="event-form"
-      action="https://formspree.io/f/xblboypv"  
-      method="POST"
-    >
-      <!-- Auto-filled from JS when they click "Join this ride" -->
-      <input type="hidden" id="event-name" name="Event Name" />
+      <form
+        id="event-form"
+        action="https://formspree.io/f/xblboypv"  
+        method="POST"
+      >
+        <!-- Auto-filled from JS when they click "Join this ride" -->
+        <input type="hidden" id="event-name" name="Event Name" />
 
-      <label for="rider-name">Your name</label>
-      <input type="text" id="rider-name" name="Rider Name" required>
+        <label for="rider-name">Your name</label>
+        <input type="text" id="rider-name" name="Rider Name" required>
 
-      <label for="rider-phone">Phone / WhatsApp</label>
-      <input type="tel" id="rider-phone" name="Phone / WhatsApp" required>
+        <label for="rider-phone">Phone / WhatsApp</label>
+        <input type="tel" id="rider-phone" name="Phone / WhatsApp" required>
 
-      <label for="riders-count">How many riders in your group?</label>
-      <select id="riders-count" name="Riders in group" required>
-        <option value="" disabled selected>Select</option>
-        <option value="1">1 rider</option>
-        <option value="2">2 riders</option>
-        <option value="3">3 riders</option>
-        <option value="4">4 riders</option>
-        <option value="5">5 riders</option>
-        <option value="6">6+ riders</option>
-      </select>
+        <label for="riders-count">How many riders in your group?</label>
+        <select id="riders-count" name="Riders in group" required>
+          <option value="" disabled selected>Select</option>
+          <option value="1">1 rider</option>
+          <option value="2">2 riders</option>
+          <option value="3">3 riders</option>
+          <option value="4">4 riders</option>
+          <option value="5">5 riders</option>
+          <option value="6">6+ riders</option>
+        </select>
 
-      <label for="extra-notes">Notes (optional)</label>
-      <textarea id="extra-notes" name="Notes" rows="3"
-        placeholder="Bike type, level, anything we should know"></textarea>
+        <label for="extra-notes">Notes (optional)</label>
+        <textarea id="extra-notes" name="Notes" rows="3"
+          placeholder="Bike type, level, anything we should know"></textarea>
 
-      <!-- Optional: email subject line -->
-      <input type="hidden" name="_subject" value="New PMC event signup" />
+        <!-- Optional: email subject line -->
+        <input type="hidden" name="_subject" value="New PMC event signup" />
 
-      <!-- Optional: redirect to thank you page instead of Formspree default -->
-      <!-- <input type="hidden" name="_redirect" value="https://paphosmc.org/thanks.html"> -->
+        <!-- Optional: redirect to thank you page instead of Formspree default -->
+        <!-- <input type="hidden" name="_redirect" value="https://paphosmc.org/thanks.html"> -->
 
-      <button type="submit" class="btn-primary">Send</button>
-    </form>
+        <button type="submit" class="btn-primary">Send</button>
+      </form>
 
-    <p id="event-form-message" class="form-message"></p>
+      <p id="event-form-message" class="form-message"></p>
+    </div>
   </div>
-</div>
-
-
 
   <!-- Membership Section -->
   <section id="membership" class="section section-alt">
@@ -234,25 +233,26 @@
       </div>
     </div>
   </section>
-  
+
+  <!-- Library Section -->
   <section id="library" class="section library-section">
-  <div class="container">
-    <div class="section-header">
-      <h2>📚 Club Library</h2>
-      <p>
-        Download useful documents, rules, manuals and guides related to our rides and events.
-      </p>
-    </div>
+    <div class="container">
+      <div class="section-header">
+        <h2>📚 Club Library</h2>
+        <p>
+          Download useful documents, rules, manuals and guides related to our rides and events.
+        </p>
+      </div>
 
-    <div id="library-status" class="library-status">
-      Loading documents...
-    </div>
+      <div id="library-status" class="library-status">
+        Loading documents...
+      </div>
 
-    <div id="library-grid" class="library-grid">
-      <!-- Cards will be injected here by script.js -->
+      <div id="library-grid" class="library-grid">
+        <!-- Cards will be injected here by script.js -->
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
   <!-- Gallery Section -->
   <section id="gallery" class="section section-alt">
@@ -285,3 +285,4 @@
   <script src="script.js"></script>
 </body>
 </html>
+
