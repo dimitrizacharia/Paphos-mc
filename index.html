@@ -2,298 +2,300 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Paphos Motorcycle Club | Off-Road Adventures</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Paphos Motorcycle Club | Enduro, Adventure &amp; Off-Road Rides in Cyprus</title>
+  <meta name="description" content="Paphos Motorcycle Club – enduro, hard enduro, adventure rides, coaching days and local events in Paphos, Cyprus. Join a ride or become a member." />
+  <meta name="theme-color" content="#0b0c10" />
+  <link rel="canonical" href="https://www.paphosmc.org/" />
 
-  <!-- Google Font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <!-- Social share preview -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Paphos Motorcycle Club" />
+  <meta property="og:description" content="Street, dirt, adventure – we ride it all. Rides, coaching and events in Paphos, Cyprus." />
+  <meta property="og:url" content="https://www.paphosmc.org/" />
+  <meta property="og:image" content="https://www.paphosmc.org/assets/og-image.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- Main CSS -->
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="preload" as="image" href="assets/hero-sm.webp" media="(max-width: 900px)" />
+  <link rel="preload" as="image" href="assets/hero.webp" media="(min-width: 901px)" />
+
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Top Navigation -->
-  <header class="site-header">
-    <div class="container header-inner">
-      <div class="logo">
-        <!-- IMAGE LOGO + TEXT -->
-        <img src="assets/pmc-logo.png" alt="Paphos Motorcycle Club Logo" class="logo-image">
-        <span class="logo-text">
-          Paphos Motorcycle Club
-          <small>Off-Road & Adventure</small>
-        </span>
-      </div>
-      <nav class="main-nav">
-        <a href="#events">Events</a>
-        <a href="#membership">Membership</a>
-        <a href="#ideas">Ideas</a>
-        <a href="#library">Library</a>
-        <a href="#gallery">Gallery</a>
-      </nav>
-      <div class="social-links">
-  <a href="https://www.facebook.com/paphosmotoclub.paphosmotoclub" 
-     target="_blank" aria-label="Facebook">
-    <img src="assets/facebook.svg" class="social-icon" alt="Facebook">
-  </a>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-  <a href="https://www.instagram.com/paphos_moto_club/" 
-     target="_blank" aria-label="Instagram">
-    <img src="assets/instagram.svg" class="social-icon" alt="Instagram">
-  </a>
-</div>
-      
+  <!-- ============ HEADER ============ -->
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a href="#top" class="brand" aria-label="Paphos Motorcycle Club – home">
+        <picture>
+          <source srcset="assets/pmc-logo-256.webp" type="image/webp" />
+          <img src="assets/pmc-logo-256.png" alt="" width="52" height="52" class="brand-logo" />
+        </picture>
+        <span class="brand-text">
+          Paphos Motorcycle Club
+          <small>Off-Road &amp; Adventure</small>
+        </span>
+      </a>
+
+      <button class="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="main-nav" id="main-nav" aria-label="Main">
+        <a href="#events">Rides &amp; Events</a>
+        <a href="#membership">Join</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#library">Library</a>
+        <a href="#ideas">Suggest a Ride</a>
+        <a href="https://orh31.com" class="nav-shop" target="_blank" rel="noopener">
+          Shop ORH31
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5" /></svg>
+        </a>
+        <div class="nav-social">
+          <a href="https://www.facebook.com/paphosmotoclub.paphosmotoclub" target="_blank" rel="noopener" aria-label="Facebook">
+            <img src="assets/facebook.svg" alt="" width="20" height="20" />
+          </a>
+          <a href="https://www.instagram.com/paphos_moto_club/" target="_blank" rel="noopener" aria-label="Instagram">
+            <img src="assets/instagram.svg" alt="" width="20" height="20" />
+          </a>
+        </div>
+      </nav>
+    </div>
   </header>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-overlay"></div>
-    <div class="hero-content container">
-      <h1>Street Dirt Adventure, we ride it all.</h1>
-      <p>Off-road, hard enduro, adventure rides, coaching and local events in Paphos and beyond.</p>
-      <div class="hero-buttons">
-        <a href="#events" class="btn btn-primary">Upcoming Events</a>
-        <a href="#membership" class="btn btn-outline">Join the Club</a>
+  <main id="main">
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="container hero-content">
+        <p class="eyebrow">Paphos · Cyprus</p>
+        <h1>Street. Dirt. Adventure.<br /><span>We ride it all.</span></h1>
+        <p class="hero-lead">Enduro, hard enduro, adventure rides, coaching days and local events, for every level of rider, from first trail to race day.</p>
+        <div class="hero-buttons">
+          <a href="#events" class="btn btn-primary">See upcoming rides</a>
+          <a href="#membership" class="btn btn-ghost">Join the club</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WHAT WE DO ============ -->
+    <section class="pillars" aria-label="What we do">
+      <div class="container pillars-grid">
+        <div class="pillar">
+          <span class="pillar-num">01</span>
+          <h3>Enduro &amp; Hard Enduro</h3>
+          <p>Technical trails across the Paphos hills, from rocky riverbeds to forest single-track.</p>
+        </div>
+        <div class="pillar">
+          <span class="pillar-num">02</span>
+          <h3>Adventure Rides</h3>
+          <p>Big-bike days from coast to mountains, with coffee and lunch stops along the way.</p>
+        </div>
+        <div class="pillar">
+          <span class="pillar-num">03</span>
+          <h3>Coaching &amp; Events</h3>
+          <p>Skill days, friendly races and scrambles. Beginners are welcome.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ EVENTS ============ -->
+    <section id="events" class="section">
+      <div class="container">
+        <div class="section-header">
+          <p class="eyebrow">Ride with us</p>
+          <h2>Upcoming rides &amp; events</h2>
+          <p>Tap <strong>Join this ride</strong> and we'll get back to you on WhatsApp with the details.</p>
+        </div>
+        <div id="events-list" class="events-grid" aria-live="polite">
+          <div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MEMBERSHIP ============ -->
+    <section id="membership" class="section section-alt">
+      <div class="container split">
+        <div class="split-copy">
+          <p class="eyebrow">Membership</p>
+          <h2>Become a member</h2>
+          <p>Join our off-road family. Membership supports events, tracks and coaching in Paphos.</p>
+          <ul class="checks">
+            <li>Organised off-road rides &amp; events</li>
+            <li>Coaching &amp; skill-building days</li>
+            <li>A local community of riders &amp; friends</li>
+          </ul>
+          <p class="muted small">Prefer to talk first? Message us on
+            <a href="https://www.facebook.com/paphosmotoclub.paphosmotoclub" target="_blank" rel="noopener">Facebook</a> or
+            <a href="https://www.instagram.com/paphos_moto_club/" target="_blank" rel="noopener">Instagram</a>, or email
+            <a href="mailto:dimitrizacharia@gmail.com">dimitrizacharia@gmail.com</a>.
+          </p>
+        </div>
+
+        <form class="card form js-ajax-form" method="POST" action="https://formspree.io/f/mnnlrqnq">
+          <input type="hidden" name="_subject" value="New PMC Membership Request" />
+          <h3>Membership registration</h3>
+          <div class="form-row">
+            <label>Full name *<input type="text" name="name" autocomplete="name" required /></label>
+            <label>Phone / WhatsApp<input type="tel" name="phone" autocomplete="tel" /></label>
+          </div>
+          <label>Email *<input type="email" name="email" autocomplete="email" required /></label>
+          <div class="form-row">
+            <label>Riding level
+              <select name="riding_level">
+                <option value="beginner">Beginner</option>
+                <option value="intermediate">Intermediate</option>
+                <option value="advanced">Advanced</option>
+                <option value="pro">Pro / Racer</option>
+              </select>
+            </label>
+            <label>Bike(s)<input type="text" name="bike" placeholder="e.g. KTM 300 EXC" /></label>
+          </div>
+          <label>Message<textarea name="message" rows="3" placeholder="Tell us a bit about you and the riding you like."></textarea></label>
+          <button type="submit" class="btn btn-primary btn-block">Send membership request</button>
+          <p class="form-status" role="status"></p>
+        </form>
+      </div>
+    </section>
+
+    <!-- ============ GALLERY ============ -->
+    <section id="gallery" class="section">
+      <div class="container">
+        <div class="section-header">
+          <p class="eyebrow">Gallery</p>
+          <h2>From the trail</h2>
+          <p>Races, training days, adventures and hard enduro from the PMC crew. Tap a photo to enlarge.</p>
+        </div>
+        <div id="gallery-grid" class="gallery-grid"></div>
+      </div>
+    </section>
+
+    <!-- ============ ORH31 PARTNER BAND ============ -->
+    <section class="partner" aria-label="ORH31 shop">
+      <div class="container partner-inner">
+        <div>
+          <p class="eyebrow">Gear · Parts · Upgrades</p>
+          <h2>Need parts or gear for your next ride?</h2>
+          <p>Visit <strong>ORH31</strong> for off-road accessories, protection and performance upgrades, including parts for the Stark Varg EX.</p>
+        </div>
+        <a href="https://orh31.com" class="btn btn-primary btn-lg" target="_blank" rel="noopener">
+          Visit ORH31.com
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- ============ LIBRARY ============ -->
+    <section id="library" class="section section-alt">
+      <div class="container">
+        <div class="section-header">
+          <p class="eyebrow">Club library</p>
+          <h2>Rules &amp; documents</h2>
+          <p>Regulations, statutes and guides for our rides and events.</p>
+        </div>
+        <ul id="library-list" class="library-list" aria-live="polite">
+          <li class="muted">Loading documents…</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ IDEAS ============ -->
+    <section id="ideas" class="section">
+      <div class="container split">
+        <div class="split-copy">
+          <p class="eyebrow">Your ideas</p>
+          <h2>Suggest a ride, route or coaching day</h2>
+          <p>Know a great trail? Want a training day on a specific skill? Tell us, and we're always looking for new trails, race formats and social rides.</p>
+        </div>
+        <form class="card form js-ajax-form" method="POST" action="https://formspree.io/f/mdkyjoka">
+          <input type="hidden" name="_subject" value="New PMC Idea / Ride / Coaching Suggestion" />
+          <h3>Share your idea</h3>
+          <div class="form-row">
+            <label>Name *<input type="text" name="name" autocomplete="name" required /></label>
+            <label>Email *<input type="email" name="email" autocomplete="email" required /></label>
+          </div>
+          <label>Idea type
+            <select name="idea_type">
+              <option value="ride">Ride / Trip</option>
+              <option value="coaching">Coaching session</option>
+              <option value="race">Race / Event</option>
+              <option value="other">Other</option>
+            </select>
+          </label>
+          <label>Your idea *<textarea name="idea" rows="4" required placeholder="Route, level, location, or what you'd like us to organise."></textarea></label>
+          <button type="submit" class="btn btn-primary btn-block">Send idea</button>
+          <p class="form-status" role="status"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="footer-brand">Paphos Motorcycle Club</div>
+        <p class="muted small">Off-road · Hard Enduro · Adventure<br />Paphos, Cyprus</p>
+      </div>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="#events">Rides &amp; Events</a>
+        <a href="#membership">Membership</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#library">Library</a>
+      </nav>
+      <div class="footer-links">
+        <a href="https://orh31.com" target="_blank" rel="noopener">Shop at ORH31.com ↗</a>
+        <a href="https://www.facebook.com/paphosmotoclub.paphosmotoclub" target="_blank" rel="noopener">Facebook ↗</a>
+        <a href="https://www.instagram.com/paphos_moto_club/" target="_blank" rel="noopener">Instagram ↗</a>
       </div>
     </div>
-  </section>
-
-  <!-- Events Section -->
-  <section id="events" class="section">
-    <div class="container">
-      <div class="section-header">
-        <h2>Upcoming Events</h2>
-        <p>Scrambles, hard enduro, adventure rides and coaching days.</p>
-      </div>
-      <div id="events-list" class="cards-grid">
-        <!-- Events will be injected here by script.js -->
-      </div>
-      <p class="section-note">
-        <!-- You can add a note here if you like -->
-      </p>
+    <div class="container footer-bottom muted small">
+      &copy; <span id="year"></span> Paphos Motorcycle Club. All rights reserved.
     </div>
-  </section>
+  </footer>
 
-  <!-- Event Signup Modal -->
-  <div id="event-modal" class="modal hidden">
-    <div class="modal-backdrop"></div>
-    <div class="modal-content">
-      <button class="modal-close" id="event-modal-close">&times;</button>
-      <h3 id="event-modal-title">Join Ride</h3>
-
-      <form
-        id="event-form"
-        action="https://formspree.io/f/xblboypv"  
-        method="POST"
-      >
-        <!-- Auto-filled from JS when they click "Join this ride" -->
-        <input type="hidden" id="event-name" name="Event Name" />
-
-        <label for="rider-name">Your name</label>
-        <input type="text" id="rider-name" name="Rider Name" required>
-
-        <label for="rider-phone">Phone / WhatsApp</label>
-        <input type="tel" id="rider-phone" name="Phone / WhatsApp" required>
-
-        <label for="riders-count">How many riders in your group?</label>
-        <select id="riders-count" name="Riders in group" required>
-          <option value="" disabled selected>Select</option>
+  <!-- ============ EVENT SIGN-UP DIALOG ============ -->
+  <dialog id="event-dialog" class="dialog" aria-labelledby="event-dialog-title">
+    <form method="dialog" class="dialog-close-form">
+      <button class="dialog-close" aria-label="Close">&times;</button>
+    </form>
+    <h3 id="event-dialog-title">Join ride</h3>
+    <p class="muted small" id="event-dialog-meta"></p>
+    <form class="form js-ajax-form" method="POST" action="https://formspree.io/f/xblboypv">
+      <input type="hidden" id="event-name" name="Event Name" />
+      <input type="hidden" name="_subject" value="New PMC event signup" />
+      <label>Your name *<input type="text" name="Rider Name" autocomplete="name" required /></label>
+      <label>Phone / WhatsApp *<input type="tel" name="Phone / WhatsApp" autocomplete="tel" required /></label>
+      <label>Riders in your group *
+        <select name="Riders in group" required>
           <option value="1">1 rider</option>
           <option value="2">2 riders</option>
           <option value="3">3 riders</option>
           <option value="4">4 riders</option>
           <option value="5">5 riders</option>
-          <option value="6">6+ riders</option>
+          <option value="6+">6+ riders</option>
         </select>
+      </label>
+      <label>Notes<textarea name="Notes" rows="2" placeholder="Bike type, level, anything we should know"></textarea></label>
+      <button type="submit" class="btn btn-primary btn-block">Send</button>
+      <p class="form-status" role="status"></p>
+    </form>
+  </dialog>
 
-        <label for="extra-notes">Notes (optional)</label>
-        <textarea id="extra-notes" name="Notes" rows="3"
-          placeholder="Bike type, level, anything we should know"></textarea>
+  <!-- ============ LIGHTBOX ============ -->
+  <dialog id="lightbox" class="lightbox" aria-label="Photo viewer">
+    <button class="lb-btn lb-close" aria-label="Close">&times;</button>
+    <button class="lb-btn lb-prev" aria-label="Previous photo">&#8249;</button>
+    <img id="lightbox-img" alt="" />
+    <button class="lb-btn lb-next" aria-label="Next photo">&#8250;</button>
+  </dialog>
 
-        <!-- Optional: email subject line -->
-        <input type="hidden" name="_subject" value="New PMC event signup" />
-
-        <!-- Optional: redirect to thank you page instead of Formspree default -->
-        <!-- <input type="hidden" name="_redirect" value="https://paphosmc.org/thanks.html"> -->
-
-        <button type="submit" class="btn-primary">Send</button>
-      </form>
-
-      <p id="event-form-message" class="form-message"></p>
-    </div>
-  </div>
-
-  <!-- Membership Section -->
-  <section id="membership" class="section section-alt">
-    <div class="container split-layout">
-      <div>
-        <h2>Become a Member</h2>
-        <p>Join our off-road family. Membership helps support events, tracks and coaching in Paphos.</p>
-        <ul class="bullets">
-          <li>Organised off-road rides & events</li>
-          <li>Coaching & skill-building days</li>
-          <li>Local community of riders & friends</li>
-        </ul>
-      </div>
-      <div>
-        <form class="form-card"
-              method="POST"
-              action="https://formspree.io/f/mnnlrqnq">
-          <!-- Hidden fields for better emails -->
-          <input type="hidden" name="_subject" value="New PMC Membership Request">
-          <input type="hidden" name="_template" value="table">
-          <!-- Optional: redirect after submit -->
-          <!-- <input type="hidden" name="_redirect" value="https://dimitrizacharia.github.io/thank-you.html"> -->
-
-          <h3>Membership Registration</h3>
-
-          <label>
-            Full Name*
-            <input type="text" name="name" required />
-          </label>
-
-          <label>
-            Email*
-            <input type="email" name="email" required />
-          </label>
-
-          <label>
-            Phone
-            <input type="tel" name="phone" />
-          </label>
-
-          <label>
-            Riding Level
-            <select name="riding_level">
-              <option value="beginner">Beginner</option>
-              <option value="intermediate">Intermediate</option>
-              <option value="advanced">Advanced</option>
-              <option value="pro">Pro / Racer</option>
-            </select>
-          </label>
-
-          <label>
-            Bike / Bikes
-            <input type="text" name="bike" placeholder="e.g. KTM 300 EXC, Stark Varg, Adventure 890…" />
-          </label>
-
-          <label>
-            Message
-            <textarea name="message" rows="4" placeholder="Tell us a bit about you and what type of riding you like."></textarea>
-          </label>
-
-          <button type="submit" class="btn btn-primary full-width">Send Membership Request</button>
-
-          <p class="form-footnote">
-            This form will email the club. You can also contact us directly at
-            <a href="mailto:dimitrizacharia@gmail.com">dimitrizacharia@gmail.com</a>
-          </p>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <!-- Ideas / Coaching Section -->
-  <section id="ideas" class="section">
-    <div class="container split-layout">
-      <div>
-        <h2>Ideas, Rides & Coaching</h2>
-        <p>Got an idea for a ride, training day or event? Share it with us.</p>
-        <p>We’re always looking for new trails, race formats, social rides and coaching topics.</p>
-      </div>
-      <div>
-        <form class="form-card"
-              method="POST"
-              action="https://formspree.io/f/mdkyjoka">
-          <!-- Hidden fields for better emails -->
-          <input type="hidden" name="_subject" value="New PMC Idea / Ride / Coaching Suggestion">
-          <input type="hidden" name="_template" value="table">
-          <!-- Optional: redirect after submit -->
-          <!-- <input type="hidden" name="_redirect" value="https://dimitrizacharia.github.io/thank-you.html"> -->
-
-          <h3>Share Your Idea</h3>
-
-          <label>
-            Name*
-            <input type="text" name="name" required />
-          </label>
-
-          <label>
-            Email*
-            <input type="email" name="email" required />
-          </label>
-
-          <label>
-            Idea Type
-            <select name="idea_type">
-              <option value="ride">Ride / Trip</option>
-              <option value="coaching">Coaching Session</option>
-              <option value="race">Race / Event</option>
-              <option value="other">Other</option>
-            </select>
-          </label>
-
-          <label>
-            Your Idea*
-            <textarea name="idea" rows="5" required placeholder="Describe the ride, route, level, location or what you’d like us to organise."></textarea>
-          </label>
-
-          <button type="submit" class="btn btn-primary full-width">Send Idea</button>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <!-- Library Section -->
-  <section id="library" class="section library-section">
-    <div class="container">
-      <div class="section-header">
-        <h2>📚 Club Library</h2>
-        <p>
-          Download useful documents, rules, manuals and guides related to our rides and events.
-        </p>
-      </div>
-
-      <div id="library-status" class="library-status">
-        Loading documents...
-      </div>
-
-      <div id="library-grid" class="library-grid">
-        <!-- Cards will be injected here by script.js -->
-      </div>
-    </div>
-  </section>
-
-  <!-- Gallery Section -->
-  <section id="gallery" class="section section-alt">
-    <div class="container">
-      <div class="section-header">
-        <h2>Gallery</h2>
-        <p>Races, training days, adventures and hard enduro from the PMC crew.</p>
-      </div>
-
-      <!-- Auto-generated gallery (JS fills this) -->
-      <div class="gallery-grid" id="auto-gallery"></div>
-
-      <p class="section-note">
-        Photos are loaded automatically from the <code>gallery</code> folder via <code>gallery.json</code>.
-      </p>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <p>&copy; <span id="year"></span> Paphos Motorcycle Club. All rights reserved.</p>
-      <p class="footer-sub">
-        Off-road | Hard Enduro | Adventure | Paphos, Cyprus
-      </p>
-    </div>
-  </footer>
-
-  <!-- Main JS -->
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
 </body>
 </html>
-

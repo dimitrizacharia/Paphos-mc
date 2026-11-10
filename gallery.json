@@ -1,1 +1,58 @@
-["0-02-0b-4717e36e8d9fa22fb311f2cf795b5908c90733c8d990fea376b0cc65d92163eb_1c6db87c7945cc.jpg", "GOPR0284.JPG", "GOPR0285.JPG", "GOPR1940.JPG", "IMG_6593.jpeg", "IMG_8295.jpeg", "Ride1.JPG", "Ride2.JPG", "hero.jpg", "hero2.jpg"]
+[
+ {
+  "src": "img/gallery/0-02-0b-4717e36e8d9fa22fb311f2cf795b5908c90733c8d990fea376b0.webp",
+  "thumb": "img/gallery/thumb/0-02-0b-4717e36e8d9fa22fb311f2cf795b5908c90733c8d990fea376b0.webp",
+  "w": 1200,
+  "h": 1600,
+  "alt": "Paphos Motorcycle Club ride photo"
+ },
+ {
+  "src": "img/gallery/GOPR0284.webp",
+  "thumb": "img/gallery/thumb/GOPR0284.webp",
+  "w": 1600,
+  "h": 1400,
+  "alt": "Paphos Motorcycle Club ride photo"
+ },
+ {
+  "src": "img/gallery/GOPR0285.webp",
+  "thumb": "img/gallery/thumb/GOPR0285.webp",
+  "w": 1600,
+  "h": 1400,
+  "alt": "Paphos Motorcycle Club ride photo"
+ },
+ {
+  "src": "img/gallery/GOPR1940.webp",
+  "thumb": "img/gallery/thumb/GOPR1940.webp",
+  "w": 1600,
+  "h": 1400,
+  "alt": "Paphos Motorcycle Club ride photo"
+ },
+ {
+  "src": "img/gallery/IMG_6593.webp",
+  "thumb": "img/gallery/thumb/IMG_6593.webp",
+  "w": 1200,
+  "h": 1600,
+  "alt": "Paphos Motorcycle Club ride photo"
+ },
+ {
+  "src": "img/gallery/IMG_8295.webp",
+  "thumb": "img/gallery/thumb/IMG_8295.webp",
+  "w": 1200,
+  "h": 1600,
+  "alt": "Paphos Motorcycle Club ride photo"
+ },
+ {
+  "src": "img/gallery/Ride1.webp",
+  "thumb": "img/gallery/thumb/Ride1.webp",
+  "w": 1201,
+  "h": 1600,
+  "alt": "Paphos Motorcycle Club ride photo"
+ },
+ {
+  "src": "img/gallery/Ride2.webp",
+  "thumb": "img/gallery/thumb/Ride2.webp",
+  "w": 1600,
+  "h": 1400,
+  "alt": "Paphos Motorcycle Club ride photo"
+ }
+]

@@ -1,14 +1,19 @@
-name: Build gallery manifest
+name: Build gallery & library
+
+# Drop photos into gallery/ or PDFs into library/ and commit.
+# This optimises the photos and updates gallery.json / library.json automatically.
 
 on:
   push:
     paths:
       - "gallery/**"
+      - "library/**"
+      - "scripts/build_assets.py"
       - ".github/workflows/build-gallery.yml"
   workflow_dispatch:
 
 jobs:
-  build-gallery:
+  build:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -17,34 +22,23 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Generate gallery.json
-        run: |
-          python - << 'EOF'
-          import os, json
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
 
-          gallery_dir = "gallery"
-          exts = (".jpg", ".jpeg", ".png", ".gif", ".webp",
-                  ".JPG", ".JPEG", ".PNG", ".GIF", ".WEBP")
+      - name: Install Pillow
+        run: pip install pillow
 
-          files = []
-          if os.path.isdir(gallery_dir):
-            for f in os.listdir(gallery_dir):
-              path = os.path.join(gallery_dir, f)
-              if os.path.isfile(path) and f.endswith(exts):
-                files.append(f)
+      - name: Build optimised images and manifests
+        run: python scripts/build_assets.py
 
-          files.sort()
-
-          with open("gallery.json", "w", encoding="utf-8") as fp:
-            json.dump(files, fp)
-          EOF
-
-      - name: Commit and push gallery.json
+      - name: Commit changes
         run: |
           if [ -n "$(git status --porcelain)" ]; then
             git config user.name "github-actions"
             git config user.email "actions@github.com"
-            git add gallery.json
-            git commit -m "Update gallery.json from GitHub Action"
+            git add -A img gallery.json library.json
+            git commit -m "Update optimised gallery + library manifests"
             git push
           fi
