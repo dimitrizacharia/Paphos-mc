@@ -1,79 +1,137 @@
-[
- {
-  "src": "img/gallery/0-02-0b-4717e36e8d9fa22fb311f2cf795b5908c90733c8d990fea376b0.webp",
-  "thumb": "img/gallery/thumb/0-02-0b-4717e36e8d9fa22fb311f2cf795b5908c90733c8d990fea376b0.webp",
-  "w": 1200,
-  "h": 1600,
-  "alt": "Paphos Motorcycle Club ride photo"
- },
- {
-  "src": "img/gallery/GOPR0284.webp",
-  "thumb": "img/gallery/thumb/GOPR0284.webp",
-  "w": 1600,
-  "h": 1400,
-  "alt": "Paphos Motorcycle Club ride photo"
- },
- {
-  "src": "img/gallery/GOPR0285.webp",
-  "thumb": "img/gallery/thumb/GOPR0285.webp",
-  "w": 1600,
-  "h": 1400,
-  "alt": "Paphos Motorcycle Club ride photo"
- },
- {
-  "src": "img/gallery/GOPR1940.webp",
-  "thumb": "img/gallery/thumb/GOPR1940.webp",
-  "w": 1600,
-  "h": 1400,
-  "alt": "Paphos Motorcycle Club ride photo"
- },
- {
-  "src": "img/gallery/IMG_0044.webp",
-  "thumb": "img/gallery/thumb/IMG_0044.webp",
-  "w": 1200,
-  "h": 1600,
-  "alt": "Paphos Motorcycle Club ride photo"
- },
- {
-  "src": "img/gallery/IMG_0174.webp",
-  "thumb": "img/gallery/thumb/IMG_0174.webp",
-  "w": 1200,
-  "h": 1600,
-  "alt": "Paphos Motorcycle Club ride photo"
- },
- {
-  "src": "img/gallery/IMG_6593.webp",
-  "thumb": "img/gallery/thumb/IMG_6593.webp",
-  "w": 1200,
-  "h": 1600,
-  "alt": "Paphos Motorcycle Club ride photo"
- },
- {
-  "src": "img/gallery/IMG_7954.webp",
-  "thumb": "img/gallery/thumb/IMG_7954.webp",
-  "w": 1200,
-  "h": 1600,
-  "alt": "Paphos Motorcycle Club ride photo"
- },
- {
-  "src": "img/gallery/IMG_8295.webp",
-  "thumb": "img/gallery/thumb/IMG_8295.webp",
-  "w": 1200,
-  "h": 1600,
-  "alt": "Paphos Motorcycle Club ride photo"
- },
- {
-  "src": "img/gallery/Ride1.webp",
-  "thumb": "img/gallery/thumb/Ride1.webp",
-  "w": 1201,
-  "h": 1600,
-  "alt": "Paphos Motorcycle Club ride photo"
- },
- {
-  "src": "img/gallery/Ride2.webp",
-  "thumb": "img/gallery/thumb/Ride2.webp",
-  "w": 1600,
-  "h": 1400,
-  "alt": "Paphos Motorcycle Club ride photo"
- }
-]
+{
+ "albums": [
+  {
+   "id": "m-2026-01",
+   "title": "January 2026",
+   "date": "2026-01",
+   "cover": "img/gallery/m-2026-01/thumb/img_0044.webp",
+   "photos": [
+    {
+     "src": "img/gallery/m-2026-01/img_0044.webp",
+     "thumb": "img/gallery/m-2026-01/thumb/img_0044.webp",
+     "w": 1200,
+     "h": 1600,
+     "alt": "January 2026 – Paphos Motorcycle Club"
+    },
+    {
+     "src": "img/gallery/m-2026-01/img_0174.webp",
+     "thumb": "img/gallery/m-2026-01/thumb/img_0174.webp",
+     "w": 1200,
+     "h": 1600,
+     "alt": "January 2026 – Paphos Motorcycle Club"
+    }
+   ]
+  },
+  {
+   "id": "m-2025-11",
+   "title": "November 2025",
+   "date": "2025-11",
+   "cover": "img/gallery/m-2025-11/thumb/img_8295.webp",
+   "photos": [
+    {
+     "src": "img/gallery/m-2025-11/img_8295.webp",
+     "thumb": "img/gallery/m-2025-11/thumb/img_8295.webp",
+     "w": 1200,
+     "h": 1600,
+     "alt": "November 2025 – Paphos Motorcycle Club"
+    }
+   ]
+  },
+  {
+   "id": "m-2025-09",
+   "title": "September 2025",
+   "date": "2025-09",
+   "cover": "img/gallery/m-2025-09/thumb/img_7954.webp",
+   "photos": [
+    {
+     "src": "img/gallery/m-2025-09/img_7954.webp",
+     "thumb": "img/gallery/m-2025-09/thumb/img_7954.webp",
+     "w": 1200,
+     "h": 1600,
+     "alt": "September 2025 – Paphos Motorcycle Club"
+    }
+   ]
+  },
+  {
+   "id": "m-2025-04",
+   "title": "April 2025",
+   "date": "2025-04",
+   "cover": "img/gallery/m-2025-04/thumb/img_6593.webp",
+   "photos": [
+    {
+     "src": "img/gallery/m-2025-04/img_6593.webp",
+     "thumb": "img/gallery/m-2025-04/thumb/img_6593.webp",
+     "w": 1200,
+     "h": 1600,
+     "alt": "April 2025 – Paphos Motorcycle Club"
+    }
+   ]
+  },
+  {
+   "id": "m-2024-11",
+   "title": "November 2024",
+   "date": "2024-11",
+   "cover": "img/gallery/m-2024-11/thumb/gopr0284.webp",
+   "photos": [
+    {
+     "src": "img/gallery/m-2024-11/gopr0284.webp",
+     "thumb": "img/gallery/m-2024-11/thumb/gopr0284.webp",
+     "w": 1600,
+     "h": 1400,
+     "alt": "November 2024 – Paphos Motorcycle Club"
+    },
+    {
+     "src": "img/gallery/m-2024-11/gopr0285.webp",
+     "thumb": "img/gallery/m-2024-11/thumb/gopr0285.webp",
+     "w": 1600,
+     "h": 1400,
+     "alt": "November 2024 – Paphos Motorcycle Club"
+    }
+   ]
+  },
+  {
+   "id": "m-2024-09",
+   "title": "September 2024",
+   "date": "2024-09",
+   "cover": "img/gallery/m-2024-09/thumb/gopr1940.webp",
+   "photos": [
+    {
+     "src": "img/gallery/m-2024-09/gopr1940.webp",
+     "thumb": "img/gallery/m-2024-09/thumb/gopr1940.webp",
+     "w": 1600,
+     "h": 1400,
+     "alt": "September 2024 – Paphos Motorcycle Club"
+    },
+    {
+     "src": "img/gallery/m-2024-09/ride2.webp",
+     "thumb": "img/gallery/m-2024-09/thumb/ride2.webp",
+     "w": 1600,
+     "h": 1400,
+     "alt": "September 2024 – Paphos Motorcycle Club"
+    }
+   ]
+  },
+  {
+   "id": "more-photos",
+   "title": "More photos",
+   "date": "",
+   "cover": "img/gallery/more-photos/thumb/0-02-0b-4717e36e8d9fa22fb311f2cf795b5908c90733c8d990fea376b0.webp",
+   "photos": [
+    {
+     "src": "img/gallery/more-photos/0-02-0b-4717e36e8d9fa22fb311f2cf795b5908c90733c8d990fea376b0.webp",
+     "thumb": "img/gallery/more-photos/thumb/0-02-0b-4717e36e8d9fa22fb311f2cf795b5908c90733c8d990fea376b0.webp",
+     "w": 1200,
+     "h": 1600,
+     "alt": "More photos – Paphos Motorcycle Club"
+    },
+    {
+     "src": "img/gallery/more-photos/ride1.webp",
+     "thumb": "img/gallery/more-photos/thumb/ride1.webp",
+     "w": 1201,
+     "h": 1600,
+     "alt": "More photos – Paphos Motorcycle Club"
+    }
+   ]
+  }
+ ]
+}

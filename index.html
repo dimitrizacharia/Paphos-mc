@@ -25,7 +25,7 @@
   <link rel="preload" as="image" href="assets/hero-sm.webp" media="(max-width: 900px)" />
   <link rel="preload" as="image" href="assets/hero.webp" media="(min-width: 901px)" />
 
-  <link rel="stylesheet" href="style.css?v=2" />
+  <link rel="stylesheet" href="style.css?v=3" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -51,7 +51,7 @@
       <nav class="main-nav" id="main-nav" aria-label="Main">
         <a href="#events">Rides &amp; Events</a>
         <a href="#membership">Join</a>
-        <a href="#gallery">Gallery</a>
+        <a href="gallery.html">Gallery</a>
         <a href="#library">Library</a>
         <a href="#ideas">Suggest a Ride</a>
         <a href="https://orh31.com" class="nav-shop" target="_blank" rel="noopener">
@@ -164,15 +164,18 @@
       </div>
     </section>
 
-    <!-- ============ GALLERY ============ -->
+    <!-- ============ GALLERY TEASER (full gallery is on gallery.html) ============ -->
     <section id="gallery" class="section">
       <div class="container">
-        <div class="section-header">
-          <p class="eyebrow">Gallery</p>
-          <h2>From the trail</h2>
-          <p>Races, training days, adventures and hard enduro from the PMC crew. Tap a photo to enlarge.</p>
+        <div class="section-header section-header-row">
+          <div>
+            <p class="eyebrow">Gallery</p>
+            <h2>From the trail</h2>
+            <p>Races, training days, adventures and hard enduro from the PMC crew.</p>
+          </div>
+          <a href="gallery.html" class="btn btn-ghost">Open the gallery →</a>
         </div>
-        <div id="gallery-grid" class="gallery-grid"></div>
+        <a href="gallery.html" class="teaser-grid" id="gallery-teaser" aria-label="Open the gallery"></a>
       </div>
     </section>
 
@@ -246,7 +249,7 @@
       <nav class="footer-links" aria-label="Footer">
         <a href="#events">Rides &amp; Events</a>
         <a href="#membership">Membership</a>
-        <a href="#gallery">Gallery</a>
+        <a href="gallery.html">Gallery</a>
         <a href="#library">Library</a>
       </nav>
       <div class="footer-links">
@@ -296,6 +299,6 @@
     <button class="lb-btn lb-next" aria-label="Next photo">&#8250;</button>
   </dialog>
 
-  <script src="script.js?v=2" defer></script>
+  <script src="script.js?v=3" defer></script>
 </body>
 </html>

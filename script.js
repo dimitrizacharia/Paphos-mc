@@ -157,39 +157,116 @@ function initForms() {
   });
 }
 
-/* ---------------- Gallery + lightbox ---------------- */
+/* ---------------- Gallery (albums) + lightbox ---------------- */
 
-let photos = [];
+let photos = [];   // photos currently browsable in the lightbox
 let current = 0;
 
-async function loadGallery() {
-  const grid = document.getElementById("gallery-grid");
-  if (!grid) return;
+// Supports the album format {albums:[...]} and older flat lists
+function normaliseGallery(data) {
+  if (data && Array.isArray(data.albums)) return data.albums;
+  const list = (Array.isArray(data) ? data : []).map((p) =>
+    typeof p === "string" ? { src: `gallery/${p}`, thumb: `gallery/${p}`, w: 4, h: 3 } : p
+  );
+  return list.length ? [{ id: "all", title: "Photos", date: "", cover: list[0].thumb, photos: list }] : [];
+}
+
+function albumDate(d) {
+  const m = /^(\d{4})-(\d{2})(?:-(\d{2}))?$/.exec(d || "");
+  if (!m) return "";
+  const month = ["January","February","March","April","May","June","July","August","September","October","November","December"][+m[2] - 1];
+  return m[3] ? `${+m[3]} ${month} ${m[1]}` : `${month} ${m[1]}`;
+}
+
+function photoGrid(list) {
+  return list
+    .map(
+      (p, i) => `<button type="button" class="gallery-item" data-i="${i}" aria-label="Open photo ${i + 1}">
+        <img src="${esc(p.thumb)}" width="${p.w}" height="${p.h}" alt="${esc(p.alt || "Club ride photo")}" loading="lazy" decoding="async">
+      </button>`
+    )
+    .join("");
+}
+
+// Home page: a small strip of the latest photos linking to gallery.html
+async function loadGalleryTeaser() {
+  const el = document.getElementById("gallery-teaser");
+  if (!el) return;
   try {
-    const data = await getJSON("gallery.json");
-    // Supports the new format (objects) and the old one (plain filenames)
-    photos = (Array.isArray(data) ? data : []).map((p) =>
-      typeof p === "string" ? { src: `gallery/${p}`, thumb: `gallery/${p}`, w: 4, h: 3 } : p
-    );
-    if (!photos.length) {
-      grid.innerHTML = `<p class="muted">Photos coming soon.</p>`;
-      return;
-    }
-    grid.innerHTML = photos
-      .map(
-        (p, i) => `<button type="button" class="gallery-item" data-i="${i}" aria-label="Open photo ${i + 1}">
-                  <img src="${esc(p.thumb)}" width="${p.w}" height="${p.h}" alt="${esc(p.alt || "Club ride photo")}" loading="lazy" decoding="async">
-                </button>`
-      )
+    const albums = normaliseGallery(await getJSON("gallery.json"));
+    const latest = albums.flatMap((a) => a.photos).slice(0, 4);
+    el.innerHTML = latest
+      .map((p) => `<span class="teaser-item"><img src="${esc(p.thumb)}" alt="" loading="lazy" decoding="async"></span>`)
       .join("");
-    grid.addEventListener("click", (e) => {
-      const item = e.target.closest(".gallery-item");
-      if (item) openLightbox(+item.dataset.i);
-    });
   } catch (err) {
     console.error(err);
-    grid.innerHTML = `<p class="muted">Couldn't load the gallery right now.</p>`;
+    el.remove();
   }
+}
+
+// Gallery page: album list <-> single album (gallery.html#album=<id>)
+async function loadGalleryPage() {
+  const listEl = document.getElementById("album-list");
+  if (!listEl) return;
+  const view = document.getElementById("album-view");
+  const grid = document.getElementById("album-photos");
+  let albums = [];
+
+  try {
+    albums = normaliseGallery(await getJSON("gallery.json"));
+  } catch (err) {
+    console.error(err);
+    listEl.innerHTML = `<p class="muted">Couldn't load the gallery right now.</p>`;
+    return;
+  }
+  if (!albums.length) {
+    listEl.innerHTML = `<p class="muted">Photos coming soon.</p>`;
+    return;
+  }
+
+  listEl.innerHTML = albums
+    .map(
+      (a) => `<a class="album-card" href="#album=${encodeURIComponent(a.id)}">
+        <span class="album-cover"><img src="${esc(a.cover)}" alt="" loading="lazy" decoding="async"></span>
+        <span class="album-info">
+          <strong>${esc(a.title)}</strong>
+          <small>${a.photos.length} photo${a.photos.length === 1 ? "" : "s"}${a.date && a.date.length === 10 ? " · " + albumDate(a.date) : ""}</small>
+        </span>
+      </a>`
+    )
+    .join("");
+
+  function route() {
+    const id = decodeURIComponent((location.hash.match(/album=([^&]+)/) || [])[1] || "");
+    const album = albums.find((a) => a.id === id);
+    if (!album) {
+      view.hidden = true;
+      listEl.hidden = false;
+      document.title = "Gallery | Paphos Motorcycle Club";
+      return;
+    }
+    photos = album.photos;
+    document.getElementById("album-title").textContent = album.title;
+    document.getElementById("album-meta").textContent =
+      `${album.photos.length} photo${album.photos.length === 1 ? "" : "s"}${album.date && album.date.length === 10 ? " · " + albumDate(album.date) : ""}`;
+    grid.innerHTML = photoGrid(album.photos);
+    listEl.hidden = true;
+    view.hidden = false;
+    document.title = `${album.title} | Gallery | Paphos Motorcycle Club`;
+    window.scrollTo({ top: 0 });
+  }
+
+  grid.addEventListener("click", (e) => {
+    const item = e.target.closest(".gallery-item");
+    if (item) openLightbox(+item.dataset.i);
+  });
+  document.getElementById("album-back").addEventListener("click", (e) => {
+    e.preventDefault();
+    history.pushState("", document.title, location.pathname);
+    route();
+  });
+  window.addEventListener("hashchange", route);
+  route();
 }
 
 function showPhoto(i) {
@@ -262,12 +339,14 @@ async function loadLibrary() {
 /* ---------------- Init ---------------- */
 
 document.addEventListener("DOMContentLoaded", () => {
-  document.getElementById("year").textContent = new Date().getFullYear();
+  const year = document.getElementById("year");
+  if (year) year.textContent = new Date().getFullYear();
   initNav();
   initForms();
   initEventDialog();
   initLightbox();
   loadEvents();
-  loadGallery();
+  loadGalleryTeaser();
+  loadGalleryPage();
   loadLibrary();
 });
