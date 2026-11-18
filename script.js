@@ -1,7 +1,8 @@
 /* =========================================================
    Paphos Motorcycle Club – site script
    Content comes from:
-     events.json   – edit this to add/remove rides
+     Google Sheet  – "Paphos MC - Events" (published as CSV, see EVENTS_SHEET_CSV)
+  events.json   – backup list, used only if the sheet can't be loaded
      gallery.json  – auto-generated from the gallery/ folder
      library.json  – auto-generated from the library/ folder
    ========================================================= */
@@ -34,12 +35,55 @@ function initNav() {
 
 /* ---------------- Events ---------------- */
 
+// Events are edited in the Google Sheet "Paphos MC - Events".
+// Columns: title, type, date (YYYY-MM-DD or DD/MM/YYYY), time, location, level, description, link
+const EVENTS_SHEET_CSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQd4rM8sA7bPHL85u0CAlYMe_2lBVRyb4-RPwpfwrBmk8D6nkBEfgklOBMAC_DG1hj-r7I04vNLoF5Z/pub?output=csv";
+
+// Minimal CSV parser (handles quotes, commas and line breaks inside cells)
+function parseCSV(text) {
+  const rows = [];
+  let row = [], cell = "", q = false;
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i];
+    if (q) {
+      if (c === '"' && text[i + 1] === '"') { cell += '"'; i++; }
+      else if (c === '"') q = false;
+      else cell += c;
+    } else if (c === '"') q = true;
+    else if (c === ",") { row.push(cell); cell = ""; }
+    else if (c === "\n" || c === "\r") {
+      if (c === "\r" && text[i + 1] === "\n") i++;
+      row.push(cell); rows.push(row); row = []; cell = "";
+    } else cell += c;
+  }
+  if (cell || row.length) { row.push(cell); rows.push(row); }
+  const head = (rows.shift() || []).map((h) => h.trim().toLowerCase());
+  return rows
+    .filter((r) => r.some((v) => v.trim()))
+    .map((r) => Object.fromEntries(head.map((h, i) => [h, (r[i] || "").trim()])))
+    .filter((ev) => ev.title);
+}
+
+async function getEvents() {
+  try {
+    const r = await fetch(EVENTS_SHEET_CSV, { cache: "no-cache" });
+    if (!r.ok) throw new Error(`sheet: ${r.status}`);
+    return parseCSV(await r.text());
+  } catch (err) {
+    console.warn("Events sheet unavailable, using events.json", err);
+    return getJSON("events.json");
+  }
+}
+
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 const DAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
 function parseDate(str) {
-  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(str || "").trim());
-  return m ? new Date(+m[1], +m[2] - 1, +m[3]) : null;
+  const s = String(str || "").trim();
+  let m = /^(\d{4})-(\d{1,2})-(\d{1,2})$/.exec(s);
+  if (m) return new Date(+m[1], +m[2] - 1, +m[3]);
+  m = /^(\d{1,2})[\/.](\d{1,2})[\/.](\d{4})$/.exec(s); // DD/MM/YYYY
+  return m ? new Date(+m[3], +m[2] - 1, +m[1]) : null;
 }
 
 function eventCard(ev) {
@@ -77,7 +121,7 @@ async function loadEvents() {
   const el = document.getElementById("events-list");
   if (!el) return;
   try {
-    const events = await getJSON("events.json");
+    const events = await getEvents();
     const today = new Date();
     today.setHours(0, 0, 0, 0);
 
