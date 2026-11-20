@@ -110,8 +110,9 @@ function eventCard(ev) {
         ${ev.location ? `<div class="event-loc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>${esc(ev.location)}</div>` : ""}
         ${ev.description ? `<p class="event-desc">${esc(ev.description)}</p>` : ""}
         <div class="event-actions">
-          <button type="button" class="btn btn-primary js-join" data-title="${esc(ev.title)}" data-when="${esc(when)}">Join this ride</button>
-          ${ev.link ? `<a class="event-more" href="${esc(ev.link)}" target="_blank" rel="noopener">More details →</a>` : ""}
+          ${ev.link
+            ? `<a class="btn btn-primary" href="${esc(ev.link)}" target="_blank" rel="noopener">Join this ride</a>`
+            : `<button type="button" class="btn btn-primary js-join" data-title="${esc(ev.title)}" data-when="${esc(when)}">Join this ride</button>`}
         </div>
       </div>
     </article>`;
