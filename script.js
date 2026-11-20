@@ -3,9 +3,19 @@
    Content comes from:
      Google Sheet  – "Paphos MC - Events" (published as CSV, see EVENTS_SHEET_CSV)
   events.json   – backup list, used only if the sheet can't be loaded
+  i18n.js       – English / Greek switch and all Greek translations
      gallery.json  – auto-generated from the gallery/ folder
      library.json  – auto-generated from the library/ folder
    ========================================================= */
+
+// Language helpers from i18n.js (falls back to English if it isn't loaded)
+const I18N = window.PMC_I18N || {
+  lang: "en", t: (s) => s, field: (ev, k) => ev[k] || "",
+  MONTHS: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+  MONTHS_LONG: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+  DAYS: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+};
+const t = I18N.t;
 
 const esc = (s) =>
   String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -26,7 +36,7 @@ function initNav() {
   const setOpen = (open) => {
     nav.classList.toggle("open", open);
     toggle.setAttribute("aria-expanded", String(open));
-    toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    toggle.setAttribute("aria-label", t(open ? "Close menu" : "Open menu"));
   };
   toggle.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
   nav.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => setOpen(false)));
@@ -75,8 +85,8 @@ async function getEvents() {
   }
 }
 
-const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-const DAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+const MONTHS = I18N.MONTHS;
+const DAYS = I18N.DAYS;
 
 function parseDate(str) {
   const s = String(str || "").trim();
@@ -86,20 +96,23 @@ function parseDate(str) {
   return m ? new Date(+m[3], +m[2] - 1, +m[1]) : null;
 }
 
-function eventCard(ev) {
+function eventCard(raw) {
+  // Use the Greek columns (title_el, description_el, ...) when the site is in Greek
+  const ev = { ...raw };
+  ["title", "type", "level", "location", "description"].forEach((k) => (ev[k] = I18N.field(raw, k)));
   const d = parseDate(ev.date);
   const dateBox = d
     ? `<div class="event-date-box"><span class="m">${MONTHS[d.getMonth()]}</span><span class="d">${d.getDate()}</span></div>`
-    : `<div class="event-date-box tba"><span class="m">Date</span><span class="d">TBA</span></div>`;
+    : `<div class="event-date-box tba"><span class="m">${t("Date")}</span><span class="d">TBA</span></div>`;
   const when = d
     ? `${DAYS[d.getDay()]}, ${d.getDate()} ${MONTHS[d.getMonth()]} ${d.getFullYear()}`
-    : esc(ev.date || "Date to be announced");
+    : esc(t(ev.date || "Date to be announced"));
 
   return `
     <article class="card event-card">
       <div class="event-date">
         ${dateBox}
-        <div class="event-when">${when}${ev.time ? `<small>Meet at ${esc(ev.time)}</small>` : ""}</div>
+        <div class="event-when">${when}${ev.time ? `<small>${t("Meet at")} ${esc(ev.time)}</small>` : ""}</div>
       </div>
       <div class="event-body">
         <div class="event-tags">
@@ -111,8 +124,8 @@ function eventCard(ev) {
         ${ev.description ? `<p class="event-desc">${esc(ev.description)}</p>` : ""}
         <div class="event-actions">
           ${ev.link
-            ? `<a class="btn btn-primary" href="${esc(ev.link)}" target="_blank" rel="noopener">Join this ride</a>`
-            : `<button type="button" class="btn btn-primary js-join" data-title="${esc(ev.title)}" data-when="${esc(when)}">Join this ride</button>`}
+            ? `<a class="btn btn-primary" href="${esc(ev.link)}" target="_blank" rel="noopener">${t("Join this ride")}</a>`
+            : `<button type="button" class="btn btn-primary js-join" data-title="${esc(ev.title)}" data-when="${esc(when)}">${t("Join this ride")}</button>`}
         </div>
       </div>
     </article>`;
@@ -153,7 +166,7 @@ function initEventDialog() {
     const btn = e.target.closest(".js-join");
     if (!btn) return;
     const title = btn.dataset.title || "PMC Ride";
-    dlg.querySelector("#event-dialog-title").textContent = `Join: ${title}`;
+    dlg.querySelector("#event-dialog-title").textContent = `${t("Join:")} ${title}`;
     dlg.querySelector("#event-dialog-meta").textContent = btn.dataset.when || "";
     dlg.querySelector("#event-name").value = `${title} (${btn.dataset.when || ""})`;
     const form = dlg.querySelector("form.js-ajax-form");
@@ -219,8 +232,11 @@ function normaliseGallery(data) {
 function albumDate(d) {
   const m = /^(\d{4})-(\d{2})(?:-(\d{2}))?$/.exec(d || "");
   if (!m) return "";
-  const month = ["January","February","March","April","May","June","July","August","September","October","November","December"][+m[2] - 1];
-  return m[3] ? `${+m[3]} ${month} ${m[1]}` : `${month} ${m[1]}`;
+  const month = I18N.MONTHS_LONG[+m[2] - 1];
+  if (m[3]) return `${+m[3]} ${month} ${m[1]}`;
+  // Greek month on its own uses a different ending (Δεκέμβριος, not Δεκεμβρίου)
+  const NOM = ["Ιανουάριος","Φεβρουάριος","Μάρτιος","Απρίλιος","Μάιος","Ιούνιος","Ιούλιος","Αύγουστος","Σεπτέμβριος","Οκτώβριος","Νοέμβριος","Δεκέμβριος"];
+  return `${I18N.lang === "el" ? NOM[+m[2] - 1] : month} ${m[1]}`;
 }
 
 function photoGrid(list) {
@@ -275,7 +291,7 @@ async function loadGalleryPage() {
         <span class="album-cover"><img src="${esc(a.cover)}" alt="" loading="lazy" decoding="async"></span>
         <span class="album-info">
           <strong>${esc(a.title)}</strong>
-          <small>${a.photos.length} photo${a.photos.length === 1 ? "" : "s"}${a.date && a.date.length === 10 ? " · " + albumDate(a.date) : ""}</small>
+          <small>${a.photos.length} ${t(a.photos.length === 1 ? "photo" : "photos")}${a.date && a.date.length === 10 ? " · " + albumDate(a.date) : ""}</small>
         </span>
       </a>`
     )
@@ -287,17 +303,17 @@ async function loadGalleryPage() {
     if (!album) {
       view.hidden = true;
       listEl.hidden = false;
-      document.title = "Gallery | Paphos Motorcycle Club";
+      document.title = t("Gallery | Paphos Motorcycle Club");
       return;
     }
     photos = album.photos;
     document.getElementById("album-title").textContent = album.title;
     document.getElementById("album-meta").textContent =
-      `${album.photos.length} photo${album.photos.length === 1 ? "" : "s"}${album.date && album.date.length === 10 ? " · " + albumDate(album.date) : ""}`;
+      `${album.photos.length} ${t(album.photos.length === 1 ? "photo" : "photos")}${album.date && album.date.length === 10 ? " · " + albumDate(album.date) : ""}`;
     grid.innerHTML = photoGrid(album.photos);
     listEl.hidden = true;
     view.hidden = false;
-    document.title = `${album.title} | Gallery | Paphos Motorcycle Club`;
+    document.title = `${album.title} | ${t("Gallery")} | Paphos Motorcycle Club`;
     window.scrollTo({ top: 0 });
   }
 
